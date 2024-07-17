@@ -12,8 +12,8 @@
     "webpack": "^5.93.0"
   },
   "version": "1.0.0",
-  "description": "My webpack project",
-  "name": "my-webpack-project",
+  "description": "MR2 Test Mods",
+  "name": "mr2-test-mods",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",

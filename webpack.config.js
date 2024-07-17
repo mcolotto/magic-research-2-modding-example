@@ -1,7 +1,7 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const webpack = require("webpack");
+const PACKAGE = require("./package.json");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -12,6 +12,7 @@ const config = {
     library: {
       type: "this",
     },
+    filename: `${PACKAGE.name}.js`,
   },
   plugins: [
     // Add your plugins here
