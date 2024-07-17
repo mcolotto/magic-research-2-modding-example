@@ -1,0 +1,12 @@
+import { ActionSubcategory } from "../action/ActionAreas";
+import { GameState } from "../GameState";
+import { DataStore } from "../generic/DataStore";
+import { Enhancement } from "./Enhancement";
+declare const Enhancements: DataStore<Enhancement>;
+export declare function registerEnhancement(enhancement: Enhancement): void;
+export { Enhancements };
+export declare function isEnhancementUnlocked(state: GameState): boolean;
+export declare function isEnhancementEverUnlocked(state: GameState): boolean;
+export declare function shouldAutoPurchaseEnhancements(state: GameState): boolean;
+export declare function getAllPurchasedEnhancements(state: GameState): Partial<Record<ActionSubcategory, Enhancement[]>>;
+export declare function loadEnhancementCommonLogic(): void;

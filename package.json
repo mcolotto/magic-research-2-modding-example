@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "moment": "^2.30.1",
+    "react": "^18.3.1",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^3.0.7",
+    "ts-loader": "^9.5.1",
+    "undici-types": "^6.19.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.93.0"
+  },
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "name": "my-webpack-project",
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
+  }
+}

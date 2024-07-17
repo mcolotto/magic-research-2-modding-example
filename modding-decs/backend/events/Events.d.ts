@@ -1,0 +1,27 @@
+import { GameState, GameStateTransform } from "../GameState";
+import { DataStore } from "../generic/DataStore";
+import { EventMessage, EventMessageOption, EventTag, GameEvent } from "./GameEvent";
+export declare function registerEventMessage(message: EventMessage): void;
+export declare function eventMessageExists(id: string): boolean;
+export declare function getEventMessageById(id: string): EventMessage;
+export type EventOccurrenceData = {
+    eventOccurrenceId: string;
+    eventId: string;
+    currentMessageId: string | null;
+    timestamp: number;
+    timestampSecondsPlayed: number;
+    params: any;
+    messageHistory: string[];
+};
+export declare function registerGameEvent(event: GameEvent): void;
+export declare function getGameEventById(id: string): GameEvent;
+export declare function getAllGameEvents(): Record<string, GameEvent>;
+export declare function getEventOccurrenceById(state: GameState, id: string): EventOccurrenceData | undefined;
+export declare function executeEventOccurrenceAction(this: any, occurrenceId: string, selectedOption: EventMessageOption): GameStateTransform;
+export declare function jumpEventToMessageIfExists(state: GameState, eventId: string, messageId: string): GameState;
+export declare function addOccurrenceToQueue(this: any, occurrenceId: string): GameStateTransform;
+export declare function removeOccurrenceFromQueue(this: any, occurrenceId: string): GameStateTransform;
+export declare function triggerEvent(this: any, event: GameEvent, params?: any, extraTags?: EventTag[]): GameStateTransform;
+export declare const EventTriggerListeners: DataStore<(state: GameState, event: GameEvent) => GameState>;
+export declare function shouldHideEventsWithTag(state: GameState, tag: EventTag): boolean;
+export declare function shouldPopUpEventWithTags(state: GameState, event: GameEvent, occurrenceId: string, tags: EventTag[], everTriggered: boolean): boolean;
