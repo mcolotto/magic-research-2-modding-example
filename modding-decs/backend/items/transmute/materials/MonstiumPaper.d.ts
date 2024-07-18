@@ -1,6 +1,6 @@
 import { GameState } from "../../../GameState";
 import { Resource } from "../../../Resources";
-import { SpellElement } from "../../../spells/Elements";
+import { SpellElement, SpellElementType } from "../../../spells/Elements";
 import { Item, ItemParams } from "../../Item";
 import { ItemTagEnum, TransmutationCategory } from "../../ItemTagEnum";
 import { TransmutationSpell } from "../TransmutationSpell";
@@ -8,7 +8,7 @@ declare class MonstiumPaper extends Item {
     getId(): string;
     getTags(): ItemTagEnum[];
     getPicture(): any;
-    getElement(): SpellElement;
+    getElement(): SpellElementType;
     getBaseName(params: ItemParams): string;
     getDescription(state: GameState, params: ItemParams): string | undefined;
     getEffect(state: GameState, params: ItemParams): string | undefined;
@@ -24,7 +24,7 @@ declare class TransmuteMonstiumPaper extends TransmutationSpell {
         resources: Partial<Record<Resource, number>>;
         items: Record<string, number>;
     };
-    getElement(): SpellElement;
+    getElement(): SpellElementType;
     getTransmutationCategory(): TransmutationCategory;
 }
 export declare const transmuteMonstiumPaper: TransmuteMonstiumPaper;

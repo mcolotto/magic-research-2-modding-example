@@ -1,5 +1,5 @@
 import { ItemTagEnum } from "../items/ItemTagEnum";
-import { SpellElement } from "../spells/Elements";
+import { SpellElementType } from "../spells/Elements";
 export declare enum ActionArea {
     HOME = "HOME",
     SPELL_MENU = "SPELL_MENU",
@@ -28,7 +28,7 @@ export declare enum ActionSubcategories {
     BOOST_OTHER = "BOOST_OTHER",
     FAMILIARS = "FAMILIARS"
 }
-export type ActionSubcategory = ActionSubcategories | SpellElement | ItemTagEnum;
+export type ActionSubcategory = ActionSubcategories | SpellElementType | ItemTagEnum;
 export declare function getSubcategoriesByArea(area: ActionArea): ActionSubcategories[];
 export declare function translateActionArea(area: ActionArea): string;
 export declare function translateActionSubcategory(subcategory: ActionSubcategories): string;

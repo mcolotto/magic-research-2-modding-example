@@ -1,0 +1,12 @@
+import { Achievement } from "./Achievement";
+import { Enemy } from "./exploration/enemies/Enemy";
+import { GameState } from "./GameState";
+import { DataStore } from "./generic/DataStore";
+import { Storyline } from "./storylines/Storyline";
+export declare function registerAchievementUnlocker(checker: (state: GameState) => boolean, achievement: Achievement): void;
+export declare function unlockAchievement(achievement: Achievement): void;
+export declare const AchievementSyncListeners: DataStore<(state: GameState) => void>;
+export declare function runAchievementSync(state: GameState): void;
+export declare function registerAchievementUnlockerFromFlag(flag: string, achievement: Achievement): void;
+export declare function registerAchievementUnlockerFromEnemy(enemy: Enemy, achievement: Achievement): void;
+export declare function registerAchievementUnlockerFromStoryline(storyline: Storyline, achievement: Achievement): void;

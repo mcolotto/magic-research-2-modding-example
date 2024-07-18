@@ -1,5 +1,5 @@
 import { GameState, GameStateTransform } from "../GameState";
-import { SpellElement } from "../spells/Elements";
+import { SpellElement, SpellElementType } from "../spells/Elements";
 import { TransformationTags } from "../transformation/TransformationTags";
 export declare const BASE_RESEARCH_EXP_PER_SEC_PER_RESEARCHER = 2;
 export declare const expGainTagsCache: Record<SpellElement, (SpellElement | TransformationTags)[]>;
@@ -10,7 +10,7 @@ export declare function getBaseResearchRate(state: GameState): number;
 export declare function explainBaseResearchRate(state: GameState): string;
 export declare function getTotalResearchers(state: GameState): number;
 export declare function getFreeResearchers(state: GameState): number;
-export declare function allocateResearchersToElement(this: any, element: SpellElement, amount: number, isAutomatic?: boolean): GameStateTransform;
+export declare function allocateResearchersToElement(this: any, element: SpellElementType, amount: number, isAutomatic?: boolean): GameStateTransform;
 export declare function isStudyUnlocked(state: GameState): boolean;
 export declare function isStudyEverUnlocked(state: GameState): boolean;
 export declare function loadResearchers(): void;

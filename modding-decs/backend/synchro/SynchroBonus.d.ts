@@ -1,7 +1,7 @@
 import { GameState } from "../GameState";
 import { ActionEffect } from "../action/Action";
 import { Identifiable } from "../generic/Identifiable";
-import { SpellElement } from "../spells/Elements";
+import { SpellElementType } from "../spells/Elements";
 import { TransformationValueType } from "../transformation/TransformationTags";
 export declare abstract class SynchroBonus implements Identifiable {
     constructor();
@@ -9,8 +9,8 @@ export declare abstract class SynchroBonus implements Identifiable {
     abstract getEffect(state: GameState, amount: number): string | undefined;
     protected getBaseBonusEffects(): Record<string, ActionEffect>;
     getCachedBaseBonusEffects: () => Record<string, ActionEffect>;
-    abstract getElement1(): SpellElement;
-    abstract getElement2(): SpellElement;
+    abstract getElement1(): SpellElementType;
+    abstract getElement2(): SpellElementType;
     getName(): string;
     getTags(): string[];
     isVisible(state: GameState): boolean;

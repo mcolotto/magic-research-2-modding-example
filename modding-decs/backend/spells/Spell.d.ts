@@ -4,12 +4,12 @@ import { Action, DoActionArgs } from "../action/Action";
 import { ActionArea, ActionSubcategory } from "../action/ActionAreas";
 import { AutocastRule } from "../autocast/Autocast";
 import { SpellAutocastCategory } from "../autocast/SpellAutocastCategory";
-import { SpellElement } from "./Elements";
+import { SpellElement, SpellElementType } from "./Elements";
 export declare abstract class Spell extends Action {
     abstract getBaseManaCost(state: GameState): number;
     abstract doSpellAction(state: GameState, args: DoActionArgs): GameState;
     abstract getLevelRequirements(): Partial<Record<SpellElement, number>>;
-    abstract getElement(): SpellElement | undefined;
+    abstract getElement(): SpellElementType | undefined;
     abstract getSpellName(): string;
     abstract getAutocastCategory(): SpellAutocastCategory;
     constructor();
@@ -58,7 +58,7 @@ export declare abstract class Spell extends Action {
     getBaseAutocastPointsRequirement(): number;
     getExpFromUsage(state: GameState): Partial<Record<SpellElement, number>>;
     getMainExp(state: GameState): {
-        element: SpellElement | undefined;
+        element: SpellElementType | undefined;
         expMin: number;
         expMax: number;
     };

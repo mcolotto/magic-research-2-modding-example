@@ -14,7 +14,7 @@ import { FamiliarData } from "./familiars/Familiar";
 import { EquipmentSlot } from "./items/Equipment";
 import { ItemOccurrence, ItemStack } from "./items/Item";
 import { SpellcraftData, SpellcraftStrategy } from "./spellcraft/SpellcraftData";
-import { SpellElement } from "./spells/Elements";
+import { SpellElementType } from "./spells/Elements";
 import { TemporaryEffectData } from "./temporaryeffects/TemporaryEffects";
 export type PlayerContextGlobalApprenticeLoadout = {
     name: string;
@@ -33,7 +33,7 @@ export type GameOptionsState = {
     sectionOrder: string[];
     hideDamageEffects: boolean;
     doNotUseNativeDriver: boolean;
-    overrideElementDisplay: SpellElement | "no";
+    overrideElementDisplay: SpellElementType | "no";
     themeMode: "light" | "dark";
     hideEventTags: EventTag[];
     enableSwiping: boolean;
@@ -70,9 +70,9 @@ export type GameOptionsState = {
 export type GameWorldState = {
     flags: Record<string, boolean>;
     variables: Record<string, string | number | boolean>;
-    maxPrimaryElementLevels: Partial<Record<SpellElement, number>>;
+    maxPrimaryElementLevels: Partial<Record<SpellElementType, number>>;
     maxFurnitureNumbers: Record<string, number>;
-    unlockedElements: Partial<Record<SpellElement, boolean>>;
+    unlockedElements: Partial<Record<SpellElementType, boolean>>;
     totalTimesResetted: number;
     quickbars: QuickbarData[][];
     currentQuickbar: number;
@@ -127,7 +127,7 @@ export type GameGlobalState = {
     }[];
     endingsHistory: EndingStats[];
     mr1flags: Record<string, boolean>;
-    maxElementLevels: Partial<Record<SpellElement, number>>;
+    maxElementLevels: Partial<Record<SpellElementType, number>>;
     timesEnemyDefeated: Record<string, {
         player: number;
         familiars: number;
@@ -168,9 +168,9 @@ export type EndingStats = {
     timePiecesConsumedThisWorld: number;
     timePiecesConsumedThisRun: number;
     totalRetirements: number;
-    primaryElement: SpellElement;
+    primaryElement: SpellElementType;
     primaryElementLevelOnEnding: number;
-    secondaryElement: SpellElement | undefined;
+    secondaryElement: SpellElementType | undefined;
     secondaryElementLevelOnEnding: number | undefined;
     combatClassId: string;
     mpl: number;
@@ -221,7 +221,7 @@ export type GameAutocastStatusState = {
     autocastPaused: boolean;
 };
 export type SynchroStrategyState = {
-    grid: Record<number, Record<number, SpellElement | undefined>>;
+    grid: Record<number, Record<number, SpellElementType | undefined>>;
     name: string | undefined;
 };
 export type GameRunState = {
@@ -230,8 +230,8 @@ export type GameRunState = {
     landPurchaseCount: number;
     flags: Record<string, boolean>;
     variables: Record<string, string | number | boolean>;
-    elementExperience: Partial<Record<SpellElement, number>>;
-    elementExponents: Partial<Record<SpellElement, number>>;
+    elementExperience: Partial<Record<SpellElementType, number>>;
+    elementExponents: Partial<Record<SpellElementType, number>>;
     eventQueue: string[];
     eventOccurrences: Record<string, EventOccurrenceData>;
     nextEventIsManuallyTriggered: boolean;
@@ -245,7 +245,7 @@ export type GameRunState = {
     temporaryEffects: Record<string, TemporaryEffectData>;
     recentSpellsCast: string[];
     nextRandomEvent: number;
-    primaryElement: SpellElement | undefined;
+    primaryElement: SpellElementType | undefined;
     inventory: ItemStack[];
     equipment: GameEquipmentState;
     equipmentLoadouts: GameEquipmentLoadout[];
@@ -259,24 +259,24 @@ export type GameRunState = {
     skipAheadTime: number;
     warpTimeSecs: number;
     summoningBlockedUntilTime: number;
-    boostsBought: Record<SpellElement, number>;
+    boostsBought: Record<SpellElementType, number>;
     autocast: GameAutocastStatusState;
     saleStallItems: ItemOccurrence[];
     saleStallProgressRatio: number;
-    partiallyUnlockedElements: Partial<Record<SpellElement, boolean>>;
+    partiallyUnlockedElements: Partial<Record<SpellElementType, boolean>>;
     combatClassId: string | undefined;
     explorationTriggers: Record<string, {
         timesTriggered: number;
         next: number;
     }>;
-    studyAllocation: Record<SpellElement, number>;
+    studyAllocation: Record<SpellElementType, number>;
     familiars: Record<string, FamiliarData>;
-    secondaryElement: SpellElement | undefined;
+    secondaryElement: SpellElementType | undefined;
     autoPurchaseActionCount: Record<string, number | "max">;
     empoweredSpells: Record<string, boolean>;
     activeRituals: Record<string, boolean>;
-    maxElementLevelsOnPrevRetirement: Partial<Record<SpellElement, number>>;
-    lastComputedLevelUpElementExperience: Partial<Record<SpellElement, number>>;
+    maxElementLevelsOnPrevRetirement: Partial<Record<SpellElementType, number>>;
+    lastComputedLevelUpElementExperience: Partial<Record<SpellElementType, number>>;
     pityEnabledAtSeconds: number | undefined;
     pityCounter: number;
     extraEventSecs: number;
@@ -293,7 +293,7 @@ export type GameTempState = {
     cache: Map<string, [number, any]>;
     flagCache: Map<string, boolean>;
     worldFlagCache: Map<string, boolean>;
-    elementLevelCache: Record<SpellElement, [number, any] | undefined>;
+    elementLevelCache: Record<SpellElementType, [number, any] | undefined>;
     locationEncyclopediaCache: DungeonFloor[] | undefined;
     isInAutocast: boolean;
     isInPermacast: boolean;
@@ -311,13 +311,13 @@ export type GameTempState = {
         }>>>;
     };
     resourceCapCache: Partial<Record<Resource, number>>;
-    unlockedElementsCache: SpellElement[];
+    unlockedElementsCache: SpellElementType[];
     incomeOverTimeCache: Record<string, Partial<Record<Resource, number>>>;
     autocastPointsRequirementCache: Record<string, number>;
     spellManaCostCache: Record<string, number>;
-    researchPerSecCache: Partial<Record<SpellElement, number>> | undefined;
+    researchPerSecCache: Partial<Record<SpellElementType, number>> | undefined;
     spellRequirementsCache: Record<string, boolean>;
-    spellExpCache: Record<string, Partial<Record<SpellElement, number>>>;
+    spellExpCache: Record<string, Partial<Record<SpellElementType, number>>>;
     lastProcessedAutocastSpellId: string | undefined;
     maxElementLevel: number | undefined;
     maxFamiliarLevel: number | undefined;

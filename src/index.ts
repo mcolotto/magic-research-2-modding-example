@@ -1,6 +1,7 @@
 import { MR2Globals } from "../modding-decs/backend/modding/Modding";
 import { loadBasicTestMod } from "./BasicTestMod";
 import { loadBuffingPouchItemTestMod } from "./BuffingPouchItemTestMod";
+import { loadEnemyTestMod } from "./EnemyTestMod";
 import { loadEquippableWeaponTestMod } from "./EquippableWeaponTestMod";
 import { loadSpellTestMod } from "./SpellTestMod";
 import { loadStorylineAndBuildingTestMod } from "./StorylineAndBuildingTestMod";
@@ -19,6 +20,7 @@ export function load(MR2: MR2Globals) {
   loadEquippableWeaponTestMod(MR2);
   loadSpellTestMod(MR2);
   loadStorylineAndBuildingTestMod(MR2);
+  loadEnemyTestMod(MR2);
 }
 
 // The following fields are used by the game.
