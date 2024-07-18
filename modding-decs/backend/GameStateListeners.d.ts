@@ -4,6 +4,8 @@ type GameStateListenerTrigger = (state: GameState, oldValue?: boolean | string |
 export declare function addGameStateListener(id: string, listener: GameStateListener, triggerExtractor?: GameStateListenerTrigger): void;
 export declare function addHighPriorityGameStateListener(id: string, listener: GameStateListener, triggerExtractor?: GameStateListenerTrigger): void;
 export declare function clearGameStateListener(id: string): void;
+export declare function getAllGameStateListenerIds(): string[];
+export declare function getAllHighPriorityGameStateListenerIds(): string[];
 export declare function applyHighPriGameStateListeners(newState: GameState): GameStateTransform[];
 export declare function applyGameStateListeners(newState: GameState): GameStateTransform[];
 export declare function applyAllTransforms(state: GameState, transform: GameStateTransform): GameState;

@@ -137,6 +137,7 @@ export type GameGlobalState = {
     hasCheated: boolean;
     favoriteTransmutationSpells: string[];
     everVisibleSpellIds: Record<string, boolean>;
+    modVersions: Record<string, string>;
 };
 export type GameEquipmentState = Record<EquipmentSlot, ItemOccurrence[]>;
 export type GameEquipmentLoadout = {

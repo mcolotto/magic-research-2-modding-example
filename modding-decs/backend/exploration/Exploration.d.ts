@@ -1,4 +1,5 @@
 import { GameState, GameStateTransform } from "../GameState";
+import { DataStore } from "../generic/DataStore";
 import { AttackTarget } from "./AttackTarget";
 import { CombatStat } from "./CombatStats";
 import { CombatActionResult } from "./ExplorationActionResult";
@@ -129,6 +130,7 @@ export declare function resetEnemyNextAction(): void;
 export declare function resetFamiliarNextAction(): void;
 export declare function getEnemyTurnCounter(state: GameState): number;
 export type EnemyDeathListener = (state: GameState, enemy: Enemy) => GameState;
+export declare const EnemyDeathListeners: DataStore<EnemyDeathListener>;
 export declare function addEnemyDeathListener(id: string, listener: EnemyDeathListener): void;
 export declare function triggerEnemyDeathListeners(state: GameState, enemy: Enemy): GameState;
 export declare function triggerCombatLoss(state: GameState): GameState;

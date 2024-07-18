@@ -19,8 +19,10 @@ export type TransformationData = {
     type: TransformationType;
     tags: TransformationTag[][];
     lastValue: number | undefined;
+    deleted: boolean;
 };
 export declare function registerTransformation(tags: TransformationTag[][], transformationId: string, transformationDescription: string, transformationType: TransformationType, transformation: Transformation): void;
+export declare function deleteTransformation(transformationId: string): void;
 export declare function applyMultiplierTransformations(tags: TransformationTag[], state: GameState, startingValue: number, params?: Record<string, any>): number;
 export declare function applyTransformations(tags: TransformationTag[], state: GameState, startingValue: number, params?: Record<string, any>, joinedTags?: string): number;
 export declare function applyTransformationsCached(tags: TransformationTag[], state: GameState, startingValue: number, params?: Record<string, any>): number;
