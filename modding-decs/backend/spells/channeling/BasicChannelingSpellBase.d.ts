@@ -2,7 +2,7 @@ import { ActionEffect, DoActionArgs } from "../../action/Action";
 import { ActionArea, ActionSubcategory } from "../../action/ActionAreas";
 import { SpellAutocastCategory } from "../../autocast/SpellAutocastCategory";
 import { GameState } from "../../GameState";
-import { Resource } from "../../Resources";
+import { Resource, ResourceType } from "../../Resources";
 import { SpellElement } from "../Elements";
 import { Spell } from "../Spell";
 export declare abstract class BasicChannelingSpellBase extends Spell {
@@ -12,7 +12,7 @@ export declare abstract class BasicChannelingSpellBase extends Spell {
     getBaseEssenceEfficiency(): number;
     getManaCostProportion(): number;
     protected getBaseActionEffects(): Record<string, ActionEffect>;
-    getEssencesToGrant(): Resource;
+    getEssencesToGrant(): ResourceType;
     getEssenceAmountToGrant(state: GameState): number;
     getTotalEssencesToGrant(state: GameState): Partial<Record<Resource, number>>;
     getDisplayEffect(state: GameState): string;

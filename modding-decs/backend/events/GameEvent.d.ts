@@ -1,4 +1,5 @@
 import { GameState } from "../GameState";
+import { Identifiable } from "../generic/Identifiable";
 import { Storyline } from "../storylines/Storyline";
 export declare enum EventTag {
     MAIN_QUEST = "MAIN_QUEST",
@@ -19,7 +20,7 @@ export interface EventMessageOption {
     transform?: (state: GameState, params: any) => GameState;
     nextMessage?: EventMessage;
 }
-export interface EventMessage {
+export interface EventMessage extends Identifiable {
     getId(): string;
     getTitle(params: any): string;
     getDescription(state: GameState, params: any): string;
@@ -27,7 +28,7 @@ export interface EventMessage {
     isTerminal(): boolean;
     isActionable(state: GameState, params: any): boolean;
 }
-export interface GameEvent {
+export interface GameEvent extends Identifiable {
     getId(): string;
     getMainEventMessage(): EventMessage;
     onTrigger(): EventTransform;

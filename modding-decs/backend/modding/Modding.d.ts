@@ -2,6 +2,7 @@ import { registerGameIcon } from "../../components/utility/icons/GameIcon";
 import { RoundingMethod, formatMultiplier, formatNumber } from "../../utils/FormattingUtils";
 import { hasFlag, hasWorldFlag } from "../Flags";
 import { addGameStateListener, addHighPriorityGameStateListener, clearGameStateListener, getAllGameStateListenerIds, getAllHighPriorityGameStateListenerIds } from "../GameStateListeners";
+import { registerResource } from "../ResourceUtils";
 import { Resource, getCappedResourceAmount, getResourceAmount, getResourceCap, grantResource, registerResourceCapClearer } from "../Resources";
 import { addUICommand } from "../UICommands";
 import { Action } from "../action/Action";
@@ -16,6 +17,7 @@ import { addEnding, getEndingData, hasEverTriggeredEnding, setGameEnding } from 
 import { Enhancement } from "../enhancement/Enhancement";
 import { isEnhancementEverUnlocked, isEnhancementUnlocked } from "../enhancement/Enhancements";
 import { SimpleGameEvent, buildEvent } from "../events/EventMessageBuilder";
+import { getGameEventById } from "../events/Events";
 import { EventTag } from "../events/GameEvent";
 import { getAllRandomEventTriggerIds, registerRandomEventTrigger, unregisterRandomEventTrigger } from "../events/autorandom/RandomEventTrigger";
 import { AttackTarget } from "../exploration/AttackTarget";
@@ -117,6 +119,9 @@ export declare const MR2: {
     registerRandomEventTrigger: typeof registerRandomEventTrigger;
     unregisterRandomEventTrigger: typeof unregisterRandomEventTrigger;
     getAllRandomEventTriggerIds: typeof getAllRandomEventTriggerIds;
+    getGameEventById: typeof getGameEventById;
+    GameEvents: DataStore<import("../events/GameEvent").GameEvent>;
+    EventMessages: DataStore<import("../events/GameEvent").EventMessage>;
     EventTriggerListeners: DataStore<(state: import("../GameState").GameState, event: import("../events/GameEvent").GameEvent) => import("../GameState").GameState>;
     EventTag: typeof EventTag;
     SimpleGameEvent: typeof SimpleGameEvent;
@@ -294,6 +299,7 @@ export declare const MR2: {
     Math: Math;
     addUICommand: typeof addUICommand;
     registerGameIcon: typeof registerGameIcon;
-    registerElement: typeof registerSpellElement;
+    registerSpellElement: typeof registerSpellElement;
+    registerResource: typeof registerResource;
 };
 export type MR2Globals = typeof MR2;

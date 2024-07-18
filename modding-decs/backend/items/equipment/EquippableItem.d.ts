@@ -19,9 +19,9 @@ export declare abstract class EquippableItem extends Item {
     getMaxHPBonusBase(params: ItemParams): number;
     maxHPTags: CombatStat[];
     getManaRegenBonusBase(params: ItemParams): number;
-    manaRegenTags: (TransformationTags | Resource)[];
+    manaRegenTags: (Resource | TransformationTags)[];
     getMaxManaBonusBase(params: ItemParams): number;
-    maxManaTags: (TransformationTags | Resource)[];
+    maxManaTags: (Resource | TransformationTags)[];
     getAttackDelayBonusRatioBase(params: ItemParams): number;
     attackDelayTags: CombatStat[];
     getPlayerAccuracyBonusBase(params: ItemParams): number;

@@ -1,6 +1,7 @@
 import { GameState, GameStateTransform } from "../GameState";
 import { DataStore } from "../generic/DataStore";
 import { EventMessage, EventMessageOption, EventTag, GameEvent } from "./GameEvent";
+export declare const EventMessages: DataStore<EventMessage>;
 export declare function registerEventMessage(message: EventMessage): void;
 export declare function eventMessageExists(id: string): boolean;
 export declare function getEventMessageById(id: string): EventMessage;
@@ -13,6 +14,7 @@ export type EventOccurrenceData = {
     params: any;
     messageHistory: string[];
 };
+export declare const GameEvents: DataStore<GameEvent>;
 export declare function registerGameEvent(event: GameEvent): void;
 export declare function getGameEventById(id: string): GameEvent;
 export declare function getAllGameEvents(): Record<string, GameEvent>;
