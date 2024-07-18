@@ -1,8 +1,7 @@
 import { GameState, GameStateTransform } from "../GameState";
 import { SpellElement, SpellElementType } from "../spells/Elements";
-import { TransformationTags } from "../transformation/TransformationTags";
 export declare const BASE_RESEARCH_EXP_PER_SEC_PER_RESEARCHER = 2;
-export declare const expGainTagsCache: Record<SpellElement, (SpellElement | TransformationTags)[]>;
+export declare const expGainTagsCache: Record<string, string[]>;
 export declare function getResearcherExpPerSecAndResearcher(state: GameState): Partial<Record<SpellElement, number>>;
 export declare function getResearcherExpPerSecForElements(state: GameState): Partial<Record<SpellElement, number>>;
 export declare function clearResearcherExpCache(state: GameState): GameState;

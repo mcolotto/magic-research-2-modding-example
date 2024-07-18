@@ -3,7 +3,7 @@ import { ActionArea, ActionSubcategory } from "../../action/ActionAreas";
 import { SpellAutocastCategory } from "../../autocast/SpellAutocastCategory";
 import { GameState } from "../../GameState";
 import { Resource, ResourceType } from "../../Resources";
-import { SpellElement } from "../Elements";
+import { SpellElementType } from "../Elements";
 import { Spell } from "../Spell";
 export declare abstract class BasicChannelingSpellBase extends Spell {
     getAreas(): Partial<Record<ActionArea, ActionSubcategory[]>>;
@@ -18,7 +18,7 @@ export declare abstract class BasicChannelingSpellBase extends Spell {
     getDisplayEffect(state: GameState): string;
     isVisible(state: GameState): boolean;
     isEnabled(state: GameState, skipAffordabilityChecks?: boolean): boolean;
-    getExpFromUsage(state: GameState): Partial<Record<SpellElement, number>>;
+    getExpFromUsage(state: GameState): Partial<Record<SpellElementType, number>>;
     doSpellAction(state: GameState, args: DoActionArgs): GameState;
     isCastingRecommended(state: GameState): boolean;
 }

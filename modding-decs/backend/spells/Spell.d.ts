@@ -4,11 +4,11 @@ import { Action, DoActionArgs } from "../action/Action";
 import { ActionArea, ActionSubcategory } from "../action/ActionAreas";
 import { AutocastRule } from "../autocast/Autocast";
 import { SpellAutocastCategory } from "../autocast/SpellAutocastCategory";
-import { SpellElement, SpellElementType } from "./Elements";
+import { SpellElementType } from "./Elements";
 export declare abstract class Spell extends Action {
     abstract getBaseManaCost(state: GameState): number;
     abstract doSpellAction(state: GameState, args: DoActionArgs): GameState;
-    abstract getLevelRequirements(): Partial<Record<SpellElement, number>>;
+    abstract getLevelRequirements(): Partial<Record<SpellElementType, number>>;
     abstract getElement(): SpellElementType | undefined;
     abstract getSpellName(): string;
     abstract getAutocastCategory(): SpellAutocastCategory;
@@ -56,7 +56,7 @@ export declare abstract class Spell extends Action {
     autocastPointsRequirementTags: () => string[];
     getAutocastPointsRequirement(state: GameState): number;
     getBaseAutocastPointsRequirement(): number;
-    getExpFromUsage(state: GameState): Partial<Record<SpellElement, number>>;
+    getExpFromUsage(state: GameState): Partial<Record<SpellElementType, number>>;
     getMainExp(state: GameState): {
         element: SpellElementType | undefined;
         expMin: number;
@@ -68,7 +68,7 @@ export declare abstract class Spell extends Action {
     isCastingRecommended(state: GameState): boolean;
     getEstimatedMinAutocastDelay(state: GameState, rule?: AutocastRule): number;
     protected isEmpowerable(): boolean;
-    getEmpoweringLevelRequirements(): Partial<Record<SpellElement, number>>;
+    getEmpoweringLevelRequirements(): Partial<Record<SpellElementType, number>>;
     isEmpoweringPossible(state: GameState): boolean;
     isEmpowered(state: GameState): boolean;
     allowRegisteringTemporaryEffectsAsPermacast(): boolean;

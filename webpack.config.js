@@ -44,9 +44,9 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
   },
-  //   optimization: {
-  //     minimize: false,
-  //   },
+  optimization: {
+    minimize: false,
+  },
 };
 
 module.exports = () => {

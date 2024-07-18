@@ -1,6 +1,10 @@
 import { MR2Globals } from "../modding-decs/backend/modding/Modding";
 import { loadBasicTestMod } from "./BasicTestMod";
 import { loadBuffingPouchItemTestMod } from "./BuffingPouchItemTestMod";
+import {
+  loadElementCreationTestMod,
+  preloadElementCreationTestMod,
+} from "./ElementCreationTestMod";
 import { loadEnemyTestMod } from "./EnemyTestMod";
 import { loadEquippableWeaponTestMod } from "./EquippableWeaponTestMod";
 import { loadSpellTestMod } from "./SpellTestMod";
@@ -21,6 +25,15 @@ export function load(MR2: MR2Globals) {
   loadSpellTestMod(MR2);
   loadStorylineAndBuildingTestMod(MR2);
   loadEnemyTestMod(MR2);
+  loadElementCreationTestMod(MR2);
+  // loadElementOverrideTestMod(MR2);
+}
+
+// In this function you will want to load things that could potentially affect
+// the main game's content.
+// The main purpose for this is to add new Elements or Resources.
+export function preload(MR2: MR2Globals) {
+  preloadElementCreationTestMod(MR2);
 }
 
 // The following fields are used by the game.

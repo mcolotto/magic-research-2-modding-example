@@ -1,4 +1,5 @@
-import { Resource } from "../../Resources";
-import { SpellElement } from "../Elements";
-export declare const RESOURCE_FOR_ELEMENT: Record<SpellElement, Resource>;
-export declare const ELEMENT_FOR_RESOURCE: Partial<Record<Resource, SpellElement>>;
+import { ResourceType } from "../../Resources";
+import { SpellElementType } from "../Elements";
+export declare const getResourceForElement: (element: SpellElementType) => any;
+export declare const getElementForResource: (resource: ResourceType) => any;
+export declare function registerExtraElementToResourceMapping(element: SpellElementType, resource: ResourceType): void;
