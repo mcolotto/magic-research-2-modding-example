@@ -3,7 +3,8 @@
 // the game's version number.
 // This value will be taken from the SDK itself and used as a parameter in-game
 // to make sure the mod's version supports the game's version.
-export const minGameVersion = require("magic-research-2-modding-sdk").version;
+export const minGameVersion =
+  require("magic-research-2-modding-sdk").minGameVersion;
 // DO NOT MODIFY - End
 
 const {
