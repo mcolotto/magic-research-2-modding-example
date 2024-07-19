@@ -1,4 +1,4 @@
-import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+import { MR2Globals } from "magic-research-2-modding-sdk";
 
 export function loadBasicTestMod(MR2: MR2Globals) {
   MR2.registerTransformation(

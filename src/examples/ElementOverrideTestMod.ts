@@ -1,4 +1,4 @@
-import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+import { MR2Globals } from "magic-research-2-modding-sdk";
 
 function overrideWaterElement(MR2: MR2Globals) {
   // NOTE: This doesn't even fully work yet
@@ -123,6 +123,8 @@ function overrideWaterElement(MR2: MR2Globals) {
     colors: iceTheme,
     id: MR2.SpellElement.Water,
     name: "Ice",
+    description:
+      "A frosty Element. It used to be Water, but in this World, it is just too cold.",
   });
 
   // Get rid of all the spells and transmutations (except Channeling)

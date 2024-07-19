@@ -1,9 +1,0 @@
-export declare enum SpellAutocastCategory {
-    TRANSMUTATION = "TRANSMUTATION",
-    CHANNELING = "CHANNELING",
-    GENERAL_BUFF = "GENERAL_BUFF",
-    COMBAT_BUFF = "COMBAT_BUFF",
-    ATTACK = "ATTACK",
-    HEALING = "HEALING",
-    OTHER = "OTHER"
-}

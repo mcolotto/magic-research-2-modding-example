@@ -71,7 +71,7 @@ _Note: You might be able to use DOM manipulation to change the UI in the Steam v
 
 ## Updating the Modding SDK
 
-It should be as straightforward as grabbing the new version of the `sdk` folder in this repository and replacing yours with it. In the (near?) future this might be made into a `npm` package so it can be managed directly that way.
+Run `yarn upgrade-sdk`. It should download the latest version. Most breaking changes that affect your mod are likely to be reflected as TypeScript errors.
 
 _Note: Since the API is not yet stable, you may need to make changes to `index.ts` (i.e. exporting more metadata) or do other things._
 

@@ -1,12 +1,11 @@
-import { GameState } from "../../sdk/modding-decs/backend/GameState";
-import { TemporaryEffectData } from "../../sdk/modding-decs/backend/temporaryeffects/TemporaryEffects";
-
-import { EquippableItem } from "../../sdk/modding-decs/backend/items/equipment/EquippableItem";
-import { ItemParams } from "../../sdk/modding-decs/backend/items/Item";
-import type { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
-import { Resource } from "../../sdk/modding-decs/backend/Resources";
-import { SpellElement } from "../../sdk/modding-decs/backend/spells/Elements";
-import { TemporaryEffect } from "../../sdk/modding-decs/backend/temporaryeffects/TemporaryEffect";
+import { MR2Globals } from "magic-research-2-modding-sdk";
+import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
+import { EquippableItem } from "magic-research-2-modding-sdk/modding-decs/backend/items/equipment/EquippableItem";
+import { ItemParams } from "magic-research-2-modding-sdk/modding-decs/backend/items/Item";
+import { Resource } from "magic-research-2-modding-sdk/modding-decs/backend/Resources";
+import { SpellElement } from "magic-research-2-modding-sdk/modding-decs/backend/spells/Elements";
+import { TemporaryEffect } from "magic-research-2-modding-sdk/modding-decs/backend/temporaryeffects/TemporaryEffect";
+import { TemporaryEffectData } from "magic-research-2-modding-sdk/modding-decs/backend/temporaryeffects/TemporaryEffects";
 
 export function loadBuffingPouchItemTestMod(MR2: MR2Globals) {
   class InsightTemporaryEffect extends MR2.TemporaryEffect {

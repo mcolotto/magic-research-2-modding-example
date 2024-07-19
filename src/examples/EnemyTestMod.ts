@@ -1,10 +1,10 @@
+import { MR2Globals } from "magic-research-2-modding-sdk";
 import {
   BattlerAction,
   BattlerStats,
   EnemyLoot,
-} from "../../sdk/modding-decs/backend/exploration/enemies/Enemy";
-import { GameState } from "../../sdk/modding-decs/backend/GameState";
-import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+} from "magic-research-2-modding-sdk/modding-decs/backend/exploration/enemies/Enemy";
+import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
 
 export function loadEnemyTestMod(MR2: MR2Globals) {
   class StickFigure extends MR2.Enemy {

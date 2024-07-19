@@ -1,11 +1,10 @@
-import { GameState } from "../../sdk/modding-decs/backend/GameState";
-import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
-import { SpellElementType } from "../../sdk/modding-decs/backend/spells/Elements";
+import { MR2Globals } from "magic-research-2-modding-sdk";
+import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
+import { SpellElementType } from "magic-research-2-modding-sdk/modding-decs/backend/spells/Elements";
 
 // This test mod creates a new simple Element using the preload feature
 // of the modding system to obtain many of the "default" behaviors
 // (like being unable to cast their spells during the pilgrimage of another Element)
-
 export function preloadElementCreationTestMod(MR2: MR2Globals) {
   // The theme for the element.
   // You can generate a theme by using the tool at
@@ -120,6 +119,8 @@ export function preloadElementCreationTestMod(MR2: MR2Globals) {
     colors: fungusTheme,
     id: "Fungus",
     name: "Fungus",
+    description:
+      "A mysterious Element. Nothing is known about it except that it's ridiculous.",
   });
 
   // Register the association between the element and the resource
