@@ -94,7 +94,7 @@ export declare function standardFamiliarAttackEffect(state: GameState, attack: n
     tags?: string[];
     onHit?: (state: GameState, actionResult: CombatActionResult) => GameState;
 }): GameState;
-export declare function drainingSummonAttackEffect(state: GameState, attack: number, options?: {
+export declare function drainingFamiliarAttackEffect(state: GameState, attack: number, options?: {
     accuracyMultiplier?: number;
     critChanceMultiplier?: number;
     forcedTarget?: AttackTarget;
