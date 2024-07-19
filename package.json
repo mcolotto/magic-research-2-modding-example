@@ -11,9 +11,9 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.93.0"
   },
-  "version": "1.0.0",
-  "description": "MR2 Test Mods",
   "name": "mr2-test-mods",
+  "description": "MR2 Test Mods",
+  "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",

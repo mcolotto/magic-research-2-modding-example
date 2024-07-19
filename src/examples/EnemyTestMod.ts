@@ -2,9 +2,9 @@ import {
   BattlerAction,
   BattlerStats,
   EnemyLoot,
-} from "../modding-decs/backend/exploration/enemies/Enemy";
-import { GameState } from "../modding-decs/backend/GameState";
-import { MR2Globals } from "../modding-decs/backend/modding/Modding";
+} from "../../modding-decs/backend/exploration/enemies/Enemy";
+import { GameState } from "../../modding-decs/backend/GameState";
+import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
 
 export function loadEnemyTestMod(MR2: MR2Globals) {
   class StickFigure extends MR2.Enemy {

@@ -1,6 +1,6 @@
-import { GameState } from "../modding-decs/backend/GameState";
-import { MR2Globals } from "../modding-decs/backend/modding/Modding";
-import { SpellElementType } from "../modding-decs/backend/spells/Elements";
+import { GameState } from "../../modding-decs/backend/GameState";
+import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
+import { SpellElementType } from "../../modding-decs/backend/spells/Elements";
 
 // This test mod creates a new simple Element using the preload feature
 // of the modding system to obtain many of the "default" behaviors

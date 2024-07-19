@@ -10,5 +10,8 @@ export declare function cacheBooleanTrueOnly(state: GameState, key: string, valu
  */
 export declare function cacheIndefinitely(state: GameState, keyFn: (state: GameState) => string, valueFn: (state: GameState) => any): any;
 export declare function clearCacheKey(state: GameState, keyFn: (state: GameState) => string): GameState;
+/**
+ * Use sparingly! This will most likely create a UI hiccup or worse.
+ */
 export declare function clearAllCaches(state: GameState): GameState;
 export declare function registerClearCacheListener(id: string, fn: GameStateTransform): void;

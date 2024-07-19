@@ -44,7 +44,6 @@ export declare const ExtraResources: DataStore<ResourceData>;
 export declare function registerResource(resourceId: string, resourceData: ResourceData): void;
 export declare function getAllResources(): ResourceType[];
 export declare function getResourceInfo(resource: ResourceType): ResourceInfo;
-export declare function getSortedResourceKeys(state: GameState): string[];
 export declare function registerResourceCapClearer(id: string, valueFn: (state: GameState) => any): void;
 export declare function clearResourceCapCache(state: GameState): GameState;
 export declare function explainResourceCap(state: GameState, resourceName: ResourceType): string;
