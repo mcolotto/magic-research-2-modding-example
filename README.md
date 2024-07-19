@@ -42,7 +42,7 @@ A good way to confirm that the mod has loaded is by adding some debug simple Tra
 
 ## How to actually build the mod
 
-The best way to learn how to build a mod is by looking at a combination of _the given examples_, which provide working basic pieces (i.e. how to create a new spell, or modify an effect in the backend) and at the same time _looking at the elements in the MR2 object_ that is passed to `load()`. The TypeScript declarations of anything in the MR2 object are included in this SDK and can be used to understand what are all the different things that can be done, although the documentation may not be thorough yet.
+The best way to learn how to build a mod is by looking at a combination of _the given examples_, which provide working basic pieces (i.e. how to create a new spell, or modify an effect in the backend) and at the same time _looking at the elements in the MR2 object_ that is passed to `load()`. The TypeScript declarations of anything in the MR2 object are included in this SDK and can be used to understand what are all the different things that can be done, although the documentation may not be thorough yet. You can look at them most easily via the autocomplete display, i.e. type `MR2.` somewhere inside a function where you have access to it in VSCode and just look at all the entries.
 
 There is a `docs` folder within this repository with additional documentation on modding and various backend concepts.
 
