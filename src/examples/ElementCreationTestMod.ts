@@ -2,6 +2,9 @@ import { MR2Globals } from "magic-research-2-modding-sdk";
 import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
 import { SpellElementType } from "magic-research-2-modding-sdk/modding-decs/backend/spells/Elements";
 
+const ELEMENT_NAME = "Fungus";
+const RESOURCE_NAME = ELEMENT_NAME;
+
 // This test mod creates a new simple Element using the preload feature
 // of the modding system to obtain many of the "default" behaviors
 // (like being unable to cast their spells during the pilgrimage of another Element)
@@ -104,12 +107,12 @@ export function preloadElementCreationTestMod(MR2: MR2Globals) {
 
   // Register the icon
   const fungusIcon = require("./fungus.png");
-  MR2.registerGameIcon("fungus", fungusIcon);
+  MR2.registerGameIcon(ELEMENT_NAME.toLowerCase(), fungusIcon);
   MR2.registerGameIcon("fungusessence", fungusIcon);
 
   // Register the resource
-  MR2.registerResource("Fungus", {
-    id: "Fungus",
+  MR2.registerResource(RESOURCE_NAME, {
+    id: RESOURCE_NAME,
     name: "Fungus",
     resourceInfo: { baseCap: 100, icon: "fungusessence" },
   });
@@ -117,14 +120,14 @@ export function preloadElementCreationTestMod(MR2: MR2Globals) {
   // Register the element
   MR2.registerSpellElement({
     colors: fungusTheme,
-    id: "Fungus",
+    id: ELEMENT_NAME,
     name: "Fungus",
     description:
       "A mysterious Element. Nothing is known about it except that it's ridiculous.",
   });
 
   // Register the association between the element and the resource
-  MR2.registerExtraElementToResourceMapping("Fungus", "Fungus");
+  MR2.registerExtraElementToResourceMapping(ELEMENT_NAME, RESOURCE_NAME);
 
   // All the rest is done in the post-load phase
 }
@@ -139,7 +142,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
       return "Channel Fungus";
     }
     getElement(): SpellElementType | undefined {
-      return "Fungus";
+      return ELEMENT_NAME;
     }
     getDisplayDescription(state: GameState): string {
       return "Channel some of your Mana into Fungus Essence, a basic resource.";
@@ -193,16 +196,19 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
         transform: (state) => {
           state = tomeOfFungalKnowledge.complete(state);
           if (
-            MR2.hasElementBeenPartiallyUnlockedInPreviousRun(state, "Fungus")
+            MR2.hasElementBeenPartiallyUnlockedInPreviousRun(
+              state,
+              ELEMENT_NAME,
+            )
           ) {
             state = tomeOfFungalKnowledge.activateBonus(state);
-            const fungusLevel = MR2.getElementLevel(state, "Fungus");
-            state = MR2.unlockElement("Fungus")(state);
-            state.run.elementExperience["Fungus"] = 0;
-            delete state.run.elementExponents["Fungus"];
+            const fungusLevel = MR2.getElementLevel(state, ELEMENT_NAME);
+            state = MR2.unlockElement(ELEMENT_NAME)(state);
+            state.run.elementExperience[ELEMENT_NAME] = 0;
+            delete state.run.elementExponents[ELEMENT_NAME];
             state = MR2.grantElementExp(
-              "Fungus",
-              MR2.getTotalExpRequiredForLevel(state, fungusLevel, "Fungus"),
+              ELEMENT_NAME,
+              MR2.getTotalExpRequiredForLevel(state, fungusLevel, ELEMENT_NAME),
             )(state);
           }
           state = MR2.clearResourceCapCache(state);
@@ -234,7 +240,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
       return MR2.triggerEvent(fungusUnlockEvent, {
         lastLine: MR2.hasElementBeenPartiallyUnlockedInPreviousRun(
           state,
-          "Fungus",
+          ELEMENT_NAME,
         )
           ? '**You have completed the "Tome of Fungal Knowledge" Storyline and have fully unlocked the Fungus element! There will be no more penalties to Fungus or :fungus: Essence. Also, in future retirements, Fungus will be available from the start, with no penalties, and it will be possible to select it as a primary element!**'
           : '**You have completed the "Tome of Fungal Knowledge" Storyline! There will be no more penalties to :fungus: Essence. Also, in future retirements, Fungus will be fully unlocked! This means that it will be available from the start, with no penalties, and it will be possible to select it as a primary element!**',
@@ -248,37 +254,37 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
     (state, isMock) => {
       if (
         tomeOfFungalKnowledge.isCompleted(state) &&
-        !MR2.getFullyUnlockedElements(state).includes("Fungal")
+        !MR2.getFullyUnlockedElements(state).includes(ELEMENT_NAME)
       ) {
-        state = MR2.unlockElement("Fungal")(state);
+        state = MR2.unlockElement(ELEMENT_NAME)(state);
       }
       return state;
     },
   );
 
   MR2.registerTransformation(
-    [["Fungus", MR2.TransformationTags.PerBuildingCap]],
+    [[ELEMENT_NAME, MR2.TransformationTags.PerBuildingCap]],
     "afterFungusUnlockCap",
     tomeOfFungalKnowledge.getName(),
     MR2.TransformationType.Multiplier,
     (state) =>
       tomeOfFungalKnowledge.isCompleted(state) &&
-      !MR2.getFullyUnlockedElements(state).includes("Fungus")
+      !MR2.getFullyUnlockedElements(state).includes(ELEMENT_NAME)
         ? 1 / 4.0
         : 1.0,
   );
 
   MR2.registerTransformation(
     [
-      ["Fungus", MR2.TransformationTags.ChannelingEfficiency],
-      ["Fungus", MR2.TransformationTags.ExpGain],
+      [ELEMENT_NAME, MR2.TransformationTags.ChannelingEfficiency],
+      [ELEMENT_NAME, MR2.TransformationTags.ExpGain],
     ],
     "afterFungusUnlockChanneling",
     tomeOfFungalKnowledge.getName(),
     MR2.TransformationType.Multiplier,
     (state) =>
       tomeOfFungalKnowledge.isCompleted(state) &&
-      !MR2.getFullyUnlockedElements(state).includes("Fungus")
+      !MR2.getFullyUnlockedElements(state).includes(ELEMENT_NAME)
         ? 1 / 4.0
         : 1.0,
   );
@@ -290,7 +296,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
       flag == "ExplorationUnlocked" &&
       !tomeOfFungalKnowledge.isBonusActive(state)
     ) {
-      state = MR2.partiallyUnlockElement("Fungus")(state);
+      state = MR2.partiallyUnlockElement(ELEMENT_NAME)(state);
     }
     return state;
   }, "fungusPartialUnlocker");
@@ -303,10 +309,21 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
         MR2.hasFlag(state, "ExplorationUnlocked") &&
         !tomeOfFungalKnowledge.isBonusActive(state)
       ) {
-        state = MR2.partiallyUnlockElement("Fungus")(state);
+        state = MR2.partiallyUnlockElement(ELEMENT_NAME)(state);
       }
       return state;
     },
     9850,
   );
+  // Finally, if we load a save file where Exploration is already unlocked,
+  // we will need to partially unlock it
+  MR2.SaveDataCompatibilityTransforms.register((state) => {
+    if (
+      !tomeOfFungalKnowledge.isBonusActive(state) &&
+      MR2.hasFlag(state, "ExplorationUnlocked")
+    ) {
+      state = MR2.partiallyUnlockElement(ELEMENT_NAME)(state);
+    }
+    return state;
+  }, "fungusPartialUnlocker");
 }

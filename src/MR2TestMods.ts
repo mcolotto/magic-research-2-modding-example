@@ -5,7 +5,6 @@ import {
   loadElementCreationTestMod,
   preloadElementCreationTestMod,
 } from "./examples/ElementCreationTestMod";
-import { loadElementOverrideTestMod } from "./examples/ElementOverrideTestMod";
 import { loadEnemyTestMod } from "./examples/EnemyTestMod";
 import { loadEquippableWeaponTestMod } from "./examples/EquippableWeaponTestMod";
 import { loadSpellTestMod } from "./examples/SpellTestMod";
@@ -29,7 +28,7 @@ export function load(MR2: MR2Globals) {
   loadStorylineAndBuildingTestMod(MR2);
   loadEnemyTestMod(MR2);
   loadElementCreationTestMod(MR2);
-  loadElementOverrideTestMod(MR2);
+  // loadElementOverrideTestMod(MR2);
 }
 
 // In this function you will want to load things that could potentially affect

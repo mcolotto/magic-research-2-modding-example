@@ -101,7 +101,7 @@ export function loadBuffingPouchItemTestMod(MR2: MR2Globals) {
     }
 
     getPicture(): any {
-      return null;
+      return require("./potionOfInsight.png");
     }
 
     getEffect(state: GameState, params: ItemParams) {
