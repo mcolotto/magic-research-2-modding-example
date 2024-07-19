@@ -105,9 +105,11 @@ function overrideWaterElement(MR2: MR2Globals) {
     return exportedColors.colors;
   };
 
-  // Register the icon
+  // Register the icon and override the other icons
   const iceIcon = require("./ice.png");
   MR2.registerGameIcon("ice", iceIcon);
+  MR2.registerGameIcon("water", iceIcon);
+  MR2.registerGameIcon("wateressence", iceIcon);
 
   // Override the resource
   MR2.registerResource(MR2.Resource.WaterEssence, {
@@ -137,15 +139,22 @@ function overrideWaterElement(MR2: MR2Globals) {
     MR2.Actions.delete(spell.getId());
   }
 
+  // Take Channel Water and rename it
+  const channelWater = MR2.Spells.getById("channelWater");
+  channelWater.getSpellName = () => "Channel Ice";
+  const oldDisplayDescription =
+    channelWater.getDisplayDescription.bind(channelWater);
+  channelWater.getDisplayDescription = (state) =>
+    oldDisplayDescription(state).replaceAll("Water", "Ice");
+
   // Change the Tower of Training dungeon
-  const towerOfTrainingWaterFloor = MR2.DungeonFloors.getById(
-    "towerOfTrainingWater",
-  );
+  const towerOfTrainingWaterFloor =
+    MR2.DungeonFloors.getById("trainingTowerWater");
   towerOfTrainingWaterFloor.getFloorName = () => "Tower of Training (Ice)";
 
   // There are a lot more things that you'd need to do that are not covered here.
   // Some (but not all!) of them are the following:
-  // Add elemental shards, prisms, and jewels
+  // Add / modify elemental shards, prisms, and jewels
   // Modify the Boost
   // Modify Elemental Orbs and Mastery Expeditions
   // Modify any events or event conditions that require Water

@@ -45,15 +45,11 @@ const config = {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
   },
   optimization: {
-    minimize: false,
+    minimize: isProduction,
   },
 };
 
 module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-  } else {
-    config.mode = "development";
-  }
+  config.mode = "production";
   return config;
 };

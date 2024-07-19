@@ -15,9 +15,9 @@
   "description": "MR2 Test Mods",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
+    "build": "webpack --node-env=production",
+    "build:dev": "webpack --node-env=development",
+    "build:prod": "webpack --node-env=production",
     "watch": "webpack --watch"
   }
 }

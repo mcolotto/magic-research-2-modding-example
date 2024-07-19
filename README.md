@@ -13,7 +13,7 @@ To get started, you will need to set up the development environment. If it's you
 3. [Download Visual Studio Code](https://code.visualstudio.com/download). It's not a requirement, but it'll be the better experience. Also install the extension _Prettier_ which is used for automatic code formatting.
 4. Download the contents of this repository, clone it with Git, or fork it.
 5. Open Visual Studio Code. "Open Workspace from File", and open the file `workspace.code-workspace`.
-6. Test that it works. At the bottom, on the terminal in VSCode, type: `yarn` in the root of the project to download and install all the dependencies, then `yarn build`. If this succeeds, you should see a file `build/mr2-test-mods.js` created in the workspace - if that's the case, congratulations, you have succeeded!
+6. Test that it works. At the bottom, on the terminal in VSCode, type: `yarn` in the root of the project to download and install all the dependencies, then `yarn build:dev`. If this succeeds, you should see a file `build/mr2-test-mods.js` created in the workspace - if that's the case, congratulations, you have succeeded!
 
 ## Creating a new mod and configuring the basic metadata
 
@@ -49,6 +49,12 @@ There is a `docs` folder within this repository with additional documentation on
 There are methods that have been added to the SDK in order to get a list of all the possible ids of certain entities. You can combine those methods with the function `MR2.alert()` to show their contents and/or debug things if desired. This is a way to know what is the id of the entity that you might want to remove or change, if that's something you'd want to do.
 
 If you have explored those but you're not sure of how to achieve what you want to achieve, any questions should go to the official Discord's `#mr2-modding` channel. The developer is usually quite active and will likely answer within a day.
+
+## Publishing the mod
+
+_Note: still TBD!_
+
+You can run `yarn build:prod` to generate a "production" / minified build of the mod.
 
 ## Modding the UI
 
