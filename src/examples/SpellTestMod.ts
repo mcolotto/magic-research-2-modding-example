@@ -1,11 +1,11 @@
 import {
   ActionEffect,
   DoActionArgs,
-} from "../../modding-decs/backend/action/Action";
-import { SpellAutocastCategory } from "../../modding-decs/backend/autocast/SpellAutocastCategory";
-import { GameState } from "../../modding-decs/backend/GameState";
-import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
-import { SpellElement } from "../../modding-decs/backend/spells/Elements";
+} from "../../sdk/modding-decs/backend/action/Action";
+import { SpellAutocastCategory } from "../../sdk/modding-decs/backend/autocast/SpellAutocastCategory";
+import { GameState } from "../../sdk/modding-decs/backend/GameState";
+import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+import { SpellElement } from "../../sdk/modding-decs/backend/spells/Elements";
 
 export function loadSpellTestMod(MR2: MR2Globals) {
   class OverpoweredChanneling extends MR2.Spell {

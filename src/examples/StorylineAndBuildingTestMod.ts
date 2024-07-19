@@ -1,12 +1,12 @@
 import {
   ActionArea,
   ActionSubcategory,
-} from "../../modding-decs/backend/action/ActionAreas";
-import { Building } from "../../modding-decs/backend/buildings/Building";
-import { GameState } from "../../modding-decs/backend/GameState";
-import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
-import { Resource } from "../../modding-decs/backend/Resources";
-import { SpellElement } from "../../modding-decs/backend/spells/Elements";
+} from "../../sdk/modding-decs/backend/action/ActionAreas";
+import { Building } from "../../sdk/modding-decs/backend/buildings/Building";
+import { GameState } from "../../sdk/modding-decs/backend/GameState";
+import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+import { Resource } from "../../sdk/modding-decs/backend/Resources";
+import { SpellElement } from "../../sdk/modding-decs/backend/spells/Elements";
 
 export function loadStorylineAndBuildingTestMod(MR2: MR2Globals) {
   // Event

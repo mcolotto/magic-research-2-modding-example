@@ -1,4 +1,4 @@
-import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
+import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
 
 function overrideWaterElement(MR2: MR2Globals) {
   // NOTE: This doesn't even fully work yet

@@ -2,7 +2,7 @@
 
 Welcome to the Magic Research 2 Modding SDK!
 
-**Important note: Magic Research 2 modding is EXPERIMENTAL. The API, capabilities, etc. are still unstable and may change at any time. Back-up your save file before doing mod development, and make sure to stay up-to-date by joining [the official Discord](https://discord.gg/bPhGsaqR9d).**
+**Important note: Magic Research 2 modding is EXPERIMENTAL. The API, capabilities, etc. are still unstable and may change at any time. It is still very early. Back-up your save file before doing mod development, and make sure to stay up-to-date by joining [the official Discord](https://discord.gg/bPhGsaqR9d).**
 
 ## Getting Started
 
@@ -20,7 +20,9 @@ To get started, you will need to set up the development environment. If it's you
 The easiest way to create a new mod is to base it off from the example that you have just downloaded.
 
 1. First, open `package.json` and edit the fields `name` and `description` (and optionally, `version`).
-2. Next, open `src/index.ts`, scroll all the way down, and edit the `description` variable.
+2. Next, copy the file `src/MR2TestMods.ts` into its same folder, and rename the copy to `nameOfYourMod.ts`.
+3. Scroll all the way down in this new file and edit the field `description` there.
+4. Finally, open `src/index.ts`, scroll all the way down, and change the line that says `require("./MR2TestMods.ts")` to instead point to the new file you created: `require("./nameOfYourMod.ts")`.
 
 Changing those fields will impact how your mod is seen in the game. The exports of `index.ts` will be seen by the game and will be used to load the mod or to access its metadata.
 
@@ -60,6 +62,12 @@ The basic operations you will have are as follows:
 2. Once you have built your custom UI, you will need to attach it with any of the three mechanisms. The "Custom Screen API" lets you create a screen (similar to Home, Study, Inventory, etc.) and is usually best for entire new features that are added to the game. The "Modded UI Hooks" are specific places in the code where you may add a new piece of UI, and in some cases they may receive an argument such as an item ID or so; an example could be if you wanted to add a new display to the item details in the Transmute screen, for instance. The hardest is using a "Moddable View", where you can override the contents of specific places in the code with your own custom UI. It is the hardest to use, but you could be using this to remove or modify UI elements.
 
 _Note: You might be able to use DOM manipulation to change the UI in the Steam version. This is **not recommended** as it will render the mod unable to work in Mobile. Beware!_
+
+## Updating the Modding SDK
+
+It should be as straightforward as grabbing the new version of the `sdk` folder in this repository and replacing yours with it. In the (near?) future this might be made into a `npm` package so it can be managed directly that way.
+
+_Note: Since the API is not yet stable, you may need to make changes to `index.ts` (i.e. exporting more metadata) or do other things._
 
 ## Future compatibility with mobile
 

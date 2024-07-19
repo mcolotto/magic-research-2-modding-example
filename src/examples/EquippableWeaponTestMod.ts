@@ -1,10 +1,10 @@
-import { GameState } from "../../modding-decs/backend/GameState";
-import { EquipmentSlot } from "../../modding-decs/backend/items/Equipment";
-import { EquippableItem } from "../../modding-decs/backend/items/equipment/EquippableItem";
-import { ItemParams } from "../../modding-decs/backend/items/Item";
-import { MR2Globals } from "../../modding-decs/backend/modding/Modding";
-import { Resource } from "../../modding-decs/backend/Resources";
-import { SpellElement } from "../../modding-decs/backend/spells/Elements";
+import { GameState } from "../../sdk/modding-decs/backend/GameState";
+import { EquipmentSlot } from "../../sdk/modding-decs/backend/items/Equipment";
+import { EquippableItem } from "../../sdk/modding-decs/backend/items/equipment/EquippableItem";
+import { ItemParams } from "../../sdk/modding-decs/backend/items/Item";
+import { MR2Globals } from "../../sdk/modding-decs/backend/modding/Modding";
+import { Resource } from "../../sdk/modding-decs/backend/Resources";
+import { SpellElement } from "../../sdk/modding-decs/backend/spells/Elements";
 
 export function loadEquippableWeaponTestMod(MR2: MR2Globals) {
   class SwordOfPower2 extends MR2.EquippableItem {
