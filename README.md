@@ -13,7 +13,7 @@ To get started, you will need to set up the development environment. If it's you
 3. [Download Visual Studio Code](https://code.visualstudio.com/download). It's not a requirement, but it'll be the better experience. Also install the extension _Prettier_ which is used for automatic code formatting.
 4. You will need the contents of this repository. Either download them, clone the repository with Git, or create a fork and clone that.
 5. Open Visual Studio Code. "Open Workspace from File", and open the file `workspace.code-workspace`.
-6. Test that it works. At the bottom, on the terminal in VSCode, type: `yarn` in the root of the project to download and install all the dependencies, then `yarn build:dev`. If this succeeds, you should see a file `build/mr2-test-mods.js` created in the workspace - if that's the case, congratulations, you have succeeded!
+6. Test that it works. At the bottom, on the terminal in VSCode, type: `yarn` in the root of the project to download and install all the dependencies, then `yarn build:dev`. If this succeeds, you should see a file `dist/mr2-test-mods.js` created in the workspace - if that's the case, congratulations, you have succeeded!
 
 ## Creating a new mod and configuring the basic metadata
 

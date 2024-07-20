@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "magic-research-2-modding-sdk": "^1.7.1",
+    "magic-research-2-modding-sdk": "^1.7.4",
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "typescript": "^5.5.3"
@@ -20,6 +20,6 @@
     "build:dev": "webpack --node-env=development",
     "build:prod": "webpack --node-env=production",
     "watch": "webpack --watch",
-    "upgrade-sdk": "yarn upgrade magic-research-2-modding-sdk"
+    "upgrade-sdk": "yarn upgrade --latest magic-research-2-modding-sdk"
   }
 }
