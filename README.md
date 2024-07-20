@@ -8,7 +8,7 @@ Welcome to the Magic Research 2 Modding SDK!
 
 To get started, you will need to set up the development environment. If it's your first time working with Magic Research 2 mods or you're not sure of what you're doing, it's best to follow these steps. Once you have a little more experience, you'll be able to tweak things.
 
-1. [Install Node.js](https://nodejs.org/en) v16 or later. Confirm that it's working by running `node --version` in the command line.
+1. [Install Node.js](https://nodejs.org/en) v18 or later. Confirm that it's working by running `node --version` in the command line. The project was tested with v18.20.4.
 2. [Install Yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
 3. [Download Visual Studio Code](https://code.visualstudio.com/download). It's not a requirement, but it'll be the better experience. Also install the extension _Prettier_ which is used for automatic code formatting.
 4. You will need the contents of this repository. Either download them, clone the repository with Git, or create a fork and clone that.
