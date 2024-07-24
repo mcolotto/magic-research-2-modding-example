@@ -60,7 +60,7 @@ You can run `yarn build:prod` to generate a "production" / minified build of the
 
 **Note: this is still under development**
 
-To mod the UI, the Magic Research 2 exposes three major ways to do so: a "Custom Screen API", a set of "Moddable Views" and also "Modded UI Hooks". This lets you add, remove, or modify UI elements.
+To mod the UI, the Magic Research 2 exposes two major ways to do so: a "Custom Screen API" and "ModdableView". This lets you add, remove, or modify UI elements.
 
 The basic operations you will have are as follows:
 
