@@ -19,7 +19,7 @@
   },
   "name": "mr2-test-mods",
   "description": "MR2 Test Mods",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "webpack --node-env=production",
     "build:dev": "webpack --node-env=development",
