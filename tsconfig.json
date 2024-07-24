@@ -6,7 +6,8 @@
     "allowJs": true,
     "strictNullChecks": true,
     "outDir": "build",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "jsx": "react-native"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "**/node_modules"]

@@ -9,6 +9,8 @@ import { loadEnemyTestMod } from "./examples/EnemyTestMod";
 import { loadEquippableWeaponTestMod } from "./examples/EquippableWeaponTestMod";
 import { loadSpellTestMod } from "./examples/SpellTestMod";
 import { loadStorylineAndBuildingTestMod } from "./examples/StorylineAndBuildingTestMod";
+import { loadUITestMod } from "./examples/UITestMod";
+import { loadWorldsMaxDifficultyTestMod } from "./examples/WorldsMaxDifficultyTestMod";
 
 const PACKAGE = require("../package.json");
 
@@ -29,6 +31,8 @@ export function load(MR2: MR2Globals) {
   loadEnemyTestMod(MR2);
   loadElementCreationTestMod(MR2);
   // loadElementOverrideTestMod(MR2);
+  loadUITestMod(MR2);
+  loadWorldsMaxDifficultyTestMod(MR2);
 }
 
 // In this function you will want to load things that could potentially affect
