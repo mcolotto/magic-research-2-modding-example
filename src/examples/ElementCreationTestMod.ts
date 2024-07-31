@@ -108,14 +108,14 @@ export function preloadElementCreationTestMod(MR2: MR2Globals) {
   // Register the icon
   const fungusIcon = require("./fungus.png");
   MR2.registerGameIcon(ELEMENT_NAME.toLowerCase(), fungusIcon);
-  MR2.registerGameIcon("fungusessence", fungusIcon);
 
-  // Register the resource
+  // Register the resource and its icon
   MR2.registerResource(RESOURCE_NAME, {
     id: RESOURCE_NAME,
     name: "Fungus",
     resourceInfo: { baseCap: 100, icon: "fungusessence" },
   });
+  MR2.registerGameIcon("fungusessence", fungusIcon);
 
   // Register the element
   MR2.registerSpellElement({
@@ -170,6 +170,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
   MR2.createAndLoadElementalShard("Fungus", require("./fungus.png"), 0.25);
 
   // Create a way to unlock this Element
+  // We will unlock it via a Storyline.
   const tomeOfFungalKnowledge = new MR2.Storyline(
     "tomeOfFungalKnowledge",
     "Tome of Fungal Knowledge",
@@ -229,6 +230,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
 
   const fungusUnlockEvent = fungusUnlockEventBuilder.build();
 
+  // Trigger the event when the Windglider is defeated
   MR2.EnemyDeathListeners.register((state, enemy) => {
     if (enemy.getId() != "windglider") {
       return state;
@@ -249,6 +251,8 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
     return state;
   }, fungusUnlockEvent.getId());
 
+  // If the Storyline is cleared, fully unlock the Element once we press
+  // the "Retire" button
   MR2.registerRetirementListener(
     "fungusUnlockRetirementListener",
     (state, isMock) => {
@@ -262,6 +266,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
     },
   );
 
+  // Element storage penalty
   MR2.registerTransformation(
     [[ELEMENT_NAME, MR2.TransformationTags.PerBuildingCap]],
     "afterFungusUnlockCap",
@@ -274,6 +279,7 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
         : 1.0,
   );
 
+  // Channeling and exp gain penalty
   MR2.registerTransformation(
     [
       [ELEMENT_NAME, MR2.TransformationTags.ChannelingEfficiency],
@@ -289,7 +295,8 @@ export function loadElementCreationTestMod(MR2: MR2Globals) {
         : 1.0,
   );
 
-  // Partially unlock the Element when Exploration is unlocked, without any fanfare
+  // The following stuff partially unlocks the Element:
+  // Partially unlock the Element when Exploration is unlocked, without any other indication
   MR2.SetFlagListeners.register((state, flag) => {
     if (
       state.run.primaryElement != null &&

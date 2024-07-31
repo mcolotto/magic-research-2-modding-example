@@ -6,7 +6,12 @@ import {
 } from "magic-research-2-modding-sdk/modding-decs/backend/exploration/enemies/Enemy";
 import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
 
+/**
+ * This mod creates a new enemy and alters the random encounter tables
+ * of a dungeon floor to make it appear.
+ */
 export function loadEnemyTestMod(MR2: MR2Globals) {
+  // Define the enemy
   class StickFigure extends MR2.Enemy {
     getId() {
       return "mr2-test-mods-stickFigure";
@@ -31,6 +36,7 @@ export function loadEnemyTestMod(MR2: MR2Globals) {
     getPicture(state: GameState) {
       return require("./stickFigure.png");
     }
+    // This is used to determine Familiar self-exploration success rate
     getLevel(): number {
       return 5;
     }
@@ -51,6 +57,7 @@ export function loadEnemyTestMod(MR2: MR2Globals) {
       ];
     }
 
+    // This is the enemy's strategy. What attack will it use next?
     getNextAction(state: GameState): BattlerAction {
       if (
         !MR2.hasTemporaryEffect(state, "haste", MR2.AttackTarget.Enemy) &&
@@ -85,8 +92,10 @@ export function loadEnemyTestMod(MR2: MR2Globals) {
     }
   }
 
+  // Create the singleton for the Enemy
   const stickFigure = new StickFigure();
 
+  // Register it, since it's a new entity
   MR2.Enemies.register(stickFigure);
 
   // Modify the spawn rates in the Training Tower Water
@@ -101,6 +110,7 @@ export function loadEnemyTestMod(MR2: MR2Globals) {
     },
   ];
   const trainingTowerWater = MR2.DungeonFloors.getById("trainingTowerWater");
+  // Here is where we actually modify them. This works because it is a singleton.
   trainingTowerWater.getBaseExplorationPossibilities = (state: GameState) => {
     return NEW_EXPLORATION_POSSIBILITIES;
   };

@@ -7,7 +7,11 @@ import { SpellAutocastCategory } from "magic-research-2-modding-sdk/modding-decs
 import { GameState } from "magic-research-2-modding-sdk/modding-decs/backend/GameState";
 import { SpellElement } from "magic-research-2-modding-sdk/modding-decs/backend/spells/Elements";
 
+/**
+ * This mod adds two new spells.
+ */
 export function loadSpellTestMod(MR2: MR2Globals) {
+  // Define the spell...
   class OverpoweredChanneling extends MR2.Spell {
     getId(): string {
       return "overpoweredChanneling";
@@ -18,6 +22,7 @@ export function loadSpellTestMod(MR2: MR2Globals) {
     }
 
     getAutocastCategory(): SpellAutocastCategory {
+      // Where will it show in the Wizards screen?
       return MR2.SpellAutocastCategory.OTHER;
     }
 
@@ -30,6 +35,9 @@ export function loadSpellTestMod(MR2: MR2Globals) {
     }
 
     getDisplayEffect(state: GameState): string {
+      // Notice the implementation of this method.
+      // This display effect will have a tooltip and will vary
+      // depending on transformations that may affect tthe effects.
       const effects = this.getActionEffects(state);
       const explanations = this.getActionEffectExplanations(state);
       return `^+${MR2.formatNumber(effects.magnitude)}^<${
@@ -45,7 +53,10 @@ export function loadSpellTestMod(MR2: MR2Globals) {
       return 30;
     }
 
+    // This is where the stuff actually happens
     doSpellAction(state: GameState, args: DoActionArgs): GameState {
+      // Notice the use of getActionEffects here. This will make sure
+      // transformations are applied.
       const effects = this.getActionEffects(state);
       return MR2.grantResource(
         MR2.Resource.EarthEssence,
@@ -59,6 +70,8 @@ export function loadSpellTestMod(MR2: MR2Globals) {
       };
     }
 
+    // This works equivalently to getBaseItemEffects in BuffingPouchItemTestMod.
+    // You want to put all your spell effects in here if they're modifiable.
     protected getBaseActionEffects(): Record<string, ActionEffect> {
       return {
         magnitude: {
@@ -73,14 +86,15 @@ export function loadSpellTestMod(MR2: MR2Globals) {
       return 30;
     }
 
+    // We want our spell to be empowerable
     getEmpoweringLevelRequirements(): Partial<Record<SpellElement, number>> {
       return { Earth: 55 };
     }
-
     protected isEmpowerable(): boolean {
       return true;
     }
 
+    // We don't want the spell to be castable if we're full of Earth Essence
     isEnabled(state: GameState, skipAffordabilityChecks?: boolean): boolean {
       return (
         MR2.getResourceAmount(state, MR2.Resource.EarthEssence) <
@@ -89,12 +103,17 @@ export function loadSpellTestMod(MR2: MR2Globals) {
     }
   }
 
+  // Create the singleton
   const overpoweredChanneling = new OverpoweredChanneling();
 
+  // This function creates a Transformation that applies to this spell's effects
+  // if the spell is empowered
   MR2.registerStandardEmpowerEffects(overpoweredChanneling, 4, 10);
 
+  // And register the singleton
   MR2.registerSpell(overpoweredChanneling);
 
+  // And now, the other spell...
   class OverpoweredStrike extends MR2.CombatSpellBase {
     getId(): string {
       return "overpoweredStrike";
@@ -113,6 +132,9 @@ export function loadSpellTestMod(MR2: MR2Globals) {
     }
 
     getExtraTags(): string[] {
+      // These will be appended to the ActionEffect-related applyTransformation calls.
+      // This makes it possible for this spell to be modified by effects
+      // that target attack spells, like Spell Catalysts.
       return [MR2.TransformationTags.AttackSpell];
     }
 
@@ -125,6 +147,9 @@ export function loadSpellTestMod(MR2: MR2Globals) {
     }
 
     protected getBaseActionEffects(): Record<string, ActionEffect> {
+      // Standard attack spells have average and variance as action effects.
+      // This will make it possible for the utility functions to pick them up
+      // easily.
       return {
         average: {
           value: 1000,
