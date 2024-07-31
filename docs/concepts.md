@@ -57,6 +57,10 @@ Instances of items as they appear in-game are called `ItemOccurrence`, and they 
 
 Building game events is quite complex, and the best way to learn is via an example. Check out `StorylineAndBuildingTestMod.ts`.
 
+## Overriding behavior
+
+There are two ways to override the behavior of _some_ functions. The first one is through `registerOverridableFunctions`, where you can change the behavior of a few select core functions, including `applyTransformations` for instance. In an overridden function, you can call the "original" function if you'd like to just modify part of it, or you can reimplement it entirely if you'd like. The second way is by changing object properties. For example, you could get the singleton instance of a certain entity, like a DungeonFloor, and then change the implementation of one of its methods. You can see this in `EnemyTestMod.ts`. This can also be applied to the object `MR2.NewGamePlus` - any function you overwrite there will be overridden if you want to change some things related to New Game +.
+
 ## Markdown and text in-game
 
 In many places in-game, text is represented using an augmented Markdown format. Examples of text that is rendered like this are action descriptions and effects. The following are syntax augmentations done to the basic Markdown format:
