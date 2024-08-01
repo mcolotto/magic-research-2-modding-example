@@ -83,3 +83,7 @@ The difference between the two: `preload` will run before the backend of the mai
 **Put the bulk of your code in `load`.**
 
 The main (only?) reason why you would want to use `preload` is if you want to add things to certain main game concepts in a way where you'd want the main game to integrate those into the game. And the main use cases for this are if you want to add a new SpellElement or a new Resource, since there are multiple Storylines and effects that affect "every SpellElement" or "every Resource". See the example `ElementCreationTestMod.ts`. The Fungus SpellElement added in that example will be automatically considered for things like the random events where you can purchase a book for Element exp, or things like Shard Stockpile, etc.
+
+## Any extra documentation?
+
+There are extra freely available, open source mods by Maticolotto at [https://github.com/mcolotto/magic-research-2-maticolotto-mods/](https://github.com/mcolotto/magic-research-2-maticolotto-mods/).
