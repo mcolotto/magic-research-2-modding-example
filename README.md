@@ -50,11 +50,16 @@ There are methods that have been added to the SDK in order to get a list of all 
 
 If you have explored those but you're not sure of how to achieve what you want to achieve, any questions should go to the official Discord's `#mr2-modding` channel. The developer is usually quite active and will likely answer within a day.
 
-## Publishing the mod
+## Publishing the mod in the Steam Workshop
 
-_Note: still TBD!_
+Before you can publish the mod in the Steam Workshop, you will need to join [this community group](https://steamcommunity.com/groups/MR2WorkshopB/). This is required as Steam Workshop support is not yet public (this will probably happen within the next month or so). You can try looking at the existing mods to get an idea of what's possible or how will things look like after you publish your mod.
 
-You can run `yarn build:prod` to generate a "production" / minified build of the mod.
+1. You can run `yarn build:prod` to generate a "production" / minified build of the mod.
+2. Take the `.js` file that's generated, and place it in a folder by itself.
+3. Open the Magic Research 2 installation directory. There should be a `workshopUploader` subfolder with an entirely separate application. This is a small, _barebones_ application made for the only purpose of uploading the mod to the Steam Workshop. Open this application.
+4. Create a new mod, then input all the fields. Then "Create or Update".
+5. Finally, if done right, you should see the mod in [the Magic Research 2 Workshop](https://steamcommunity.com/workshop/browse/?appid=2864890).
+6. To upload a new version of your mod, you can use the same tool.
 
 ## Modding the UI
 
